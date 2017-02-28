@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽奖</title>
+    <style>
+        *{margin:0;padding:0;}
+        .div1{
+            width:500px;
+            height:60px;
+            margin:0 auto;
+            text-align: center;
+            color:red;
+            font-size: 24px;
+            font-weight:bold;
+            padding-top:30px;
+        }
+        .div2{
+            width:188px;
+            height:30px;
+            margin:0 auto;
+        }
+        .div2 span{
+            float: left;
+            width:80px;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 1em;
+            background: #f60;
+            color:#fff;
+            font-size: 14px;
+            font-family: "微软雅黑";
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var data =['勒布朗詹姆斯（12版）','姚明（08版）','麦基（12版）','科比布莱恩特（巅峰）','奥尼尔（01版）','乔丹（96版）','周琦（17版）','艾弗森（01版）','波尔津吉斯','乔尔恩比德','谢谢参与'],
+            time = null;
+            flag = 0;
+        window.onload = function(){
+            var title = document.getElementById('title');
+            var play = document.getElementById('play');
+            var stop =document.getElementById('stop');
+
+            //开始抽奖
+            play.onclick = onplay;
+            stop.onclick = onstop;
+
+            //键盘事件
+           document.onkeyup=function(event){
+               event = event || window.event;
+               if(event.keyCode == 13){
+                   if(flag == 0){
+                       onplay();
+                       flag = 1;
+                   }else{
+                       onstop();
+                       flag=0;
+                   }
+               }
+           };
+            function onplay(){
+                clearInterval(time);
+                time = setInterval(function(){
+                    var random = Math.floor(Math.random()*data.length);
+                    title.innerHTML=data[random];
+                    play.style.background="#ccc";
+                },50)
+            }
+
+            function onstop(){
+                clearInterval(time);
+                play.style.background="#f60";
+                alert("恭喜你抽到了"+title.innerHTML);
+            }
+        };
+
+
+    </script>
+    </head>
+<body>
+    <div class="div1" id="title">
+        抽奖开始啦！
+    </div>
+    <div class="div2">
+        <span id="play">开始</span>
+        <span id="stop">停止</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标右键菜单</title>
+    <style>
+        #divid{
+            width:140px;
+            height:215px;
+            position: absolute;
+            left:0;
+            top:0;
+            border:1px solid #ccc;
+        }
+        #divid ul{
+            list-style: none;
+            padding:0;
+            margin:0;
+            text-indent:20px;
+        }
+        #divid li{
+            width:140px;
+            height:30px;
+            line-height: 30px;
+            border-bottom: 1px solid #ccc;
+        }
+        #divid li:last-child{
+            border:none;
+        }
+        #divid li a{
+            text-decoration: none;
+            color:blue
+        }
+        #divid li a:hover{
+            color:red;
+        }
+        #divid li:hover{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="divid" style="display: none;">
+        <ul>
+            <li class="on"><a href="http://www.nba2k.com">勒布朗詹姆斯</a></li>
+            <li><a href="#">凯利欧文</a></li>
+            <li><a href="#">凯文乐福</a></li>
+            <li><a href="#">史蒂芬库里</a></li>
+            <li><a href="#">凯文杜兰特</a></li>
+            <li><a href="#">克莱汤普森</a></li>
+            <li><a href="#">德雷蒙德格林</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    div = document.getElementById("divid");
+    document.oncontextmenu = function () {
+
+        var x = event.clientX;
+        var y =event.clientY;
+        div.style.left = x+"px";
+        div.style.top = y+"px";
+        div.style.display = "block";
+
+        return false;
+    };
+    document.onclick = function () {
+        div.style.display="none";
+    }
+
+</script>
+</html>

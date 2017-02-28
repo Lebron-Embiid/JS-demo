@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+<style>
+    div{
+        width: 300px;
+        height:100px;
+        background: black;
+        margin:0 auto;
+        color:green;
+        font-size: 30px;
+        text-align: center;
+        line-height:100px;
+    }
+</style>
+</head>
+<body>
+<div id="div"></div>
+<img src="" alt="" id="img">
+</body>
+<script>
+
+    setInterval(function() {
+        var str = ["1","2","3","4"];
+        var random = Math.ceil(Math.random()*str.length);
+        var img = document.getElementById("img");
+        img.src = random+".jpg";
+    },1000);
+
+    setInterval(function () {
+        var did = document.getElementById("div");
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        var dd = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+        did.innerHTML = dd;
+    },1000)
+
+
+    var obj = document.getElementById("h1");
+    num = 6;
+    var s = setInterval(show,1000);
+    function  show(){
+        --num ;
+        obj.innerHTML =num;
+        if(num <= 0){
+            clearInterval(s);
+            obj.innerHTML ="";
+            document.body.style.background = "#f0f";
+        }
+    }
+</script>
+</html>
